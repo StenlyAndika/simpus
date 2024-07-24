@@ -134,7 +134,7 @@
                             updateTable();
                         }
                         $('#cariobat').val('');
-                        $('#jumlah').val('');
+                        $('#jumlah').val('1');
                         $('#idobat').val('');
                     },
                     error: function(xhr, status, error) {
@@ -270,6 +270,80 @@
                     }
                 });
             });
+
+            $('#dataRiwayat').on('shown.bs.modal',function (event) {
+                var button = $(event.relatedTarget); // Button that triggered the modal
+                var nik = button.data('id'); // Extract info from data-* attributes
+                var modal = $(this);
+
+                // Make an AJAX request to fetch data by ID
+                $.ajax({
+                    url: '/dashboard/cekriwayat/' + nik, // Change this URL to your endpoint
+                    type: 'GET',
+                    success: function(response) {
+                        $('#rtgl').val('');
+                        $('#rdokter').val('');
+                        $('#rs').val('');
+                        $('#ro').val('');
+                        $('#ra').val('');
+                        $('#rp').val('');
+                        // Clear the table body
+                        var tableBody = modal.find('#tableriwayat');
+                        tableBody.empty();
+
+                        // Populate the table with the fetched data
+                        response.data.forEach(function(item, index) {
+                            var date = new Date(item.tgl);
+                            var formattedDate = ('0' + date.getDate()).slice(-2) + '-' + 
+                                                ('0' + (date.getMonth() + 1)).slice(-2) + '-' + 
+                                                date.getFullYear();
+                            var row = `<tr>
+                                        <th scope="row">${index + 1}</th>
+                                        <td>${formattedDate}</td>
+                                        <td>${item.nama}</td>
+                                        <td>${item.s}</td>
+                                        <td>${item.p}</td>
+                                        <td>${item.alergi}</td>
+                                        <td><button type="button" class="btn btn-block btn-sm btn-primary cekDataBtn" data-row-id="${item.idp}">Cek Data</button></td>
+                                    </tr>`;
+                            tableBody.append(row);
+                        });
+                        attachGetRiwayatHandlers();
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error fetching data:', error);
+                    }
+                });
+            });
+
+            function attachGetRiwayatHandlers() {
+                $('.cekDataBtn').on('click', function() {
+                    var rowId = $(this).data('row-id');
+
+                    $.ajax({
+                        type: 'GET',
+                        url: '/dashboard/getriwayat/' + rowId, // Adjust the URL as needed
+                        success: function(response) {
+                            // console.log(data.tgl);
+                            // Populate the modal with the fetched data
+                            var date = new Date(response.data[0].tgl);
+                            var formattedDate = ('0' + date.getDate()).slice(-2) + '-' + 
+                                                ('0' + (date.getMonth() + 1)).slice(-2) + '-' + 
+                                                date.getFullYear();
+                            $('#rtgl').val(formattedDate);
+                            $('#rdokter').val(response.data[0].nama);
+                            $('#rs').val(response.data[0].s.replace(/<\/?[^>]+(>|$)/g, ""));
+                            $('#ro').val(response.data[0].o.replace(/<\/?[^>]+(>|$)/g, ""));
+                            $('#ra').val(response.data[0].a.replace(/<\/?[^>]+(>|$)/g, ""));
+                            $('#rp').val(response.data[0].p.replace(/<\/?[^>]+(>|$)/g, ""));
+                        },
+                        error: function(response) {
+                            console.log('An error occurred while fetching data.');
+                        }
+                    });
+                });
+            }
+
         });
     </script>
     @endif

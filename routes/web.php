@@ -46,6 +46,8 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/dashboard/soap', [DashboardDiagnosa::class, 'savetempSOAP'])->name('admin.poli.storesoap');
     Route::post('/dashboard/ambilobat', [DashboardDiagnosa::class, 'savetempObat'])->name('admin.poli.storeobat');
     Route::post('/dashboard/diagnosa', [DashboardDiagnosa::class, 'store'])->name('admin.poli.diagnosa.store');
+    Route::get('/dashboard/cekriwayat/{nik}', [DashboardDiagnosa::class, 'cekRiwayat'])->name('admin.poli.cekriwayat');
+    Route::get('/dashboard/getriwayat/{idp}', [DashboardDiagnosa::class, 'getRiwayat'])->name('admin.poli.getriwayat');
 
     Route::get('/admin/user/{user}/show', [DashboardUser::class, 'show'])->name('admin.user.show');
     Route::put('/admin/user/{user}', [DashboardUser::class, 'update'])->name('admin.user.update');

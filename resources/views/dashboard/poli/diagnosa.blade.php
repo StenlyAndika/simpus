@@ -59,7 +59,7 @@
                     <div class="col-md-6">
                         <div class="input-group">
                             <span class="input-group-text col-md-5">Riwayat Berobat</span>
-                            <button type="button" class="btn btn-primary col-md-7" data-bs-toggle="modal" data-bs-target="#dataRiwayat">Cek Data</button>
+                            <button type="button" class="btn btn-primary col-md-7" data-bs-toggle="modal" data-bs-target="#dataRiwayat" data-id="{{ $pasien->nik }}">Cek Data</button>
                         </div>
                     </div>
                     <div class="col-md-6">

@@ -48,6 +48,7 @@ class DashboardController extends Controller
                     "PKPR"
                 ];
                 session()->forget('temp_soap_data');
+                session()->forget('temp_obat_data');
                 return view('dashboard.poli.index', [
                     'title' => 'Dashboard Poli',
                     'poli' => $poli,

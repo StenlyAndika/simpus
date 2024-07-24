@@ -47,6 +47,24 @@ class DashboardDiagnosa extends Controller
         return response()->json(['waiting' => $waitingCount > 0]);
     }
 
+    public function cekRiwayat($id) {
+        $data = Pendaftaran::join('diagnosa', 'diagnosa.idp', 'pendaftaran.idp')
+        ->join('dokter', 'dokter.idd', 'diagnosa.idd')
+        ->select('pendaftaran.*', 'diagnosa.*', 'dokter.*')
+        ->where('pendaftaran.nik', $id)
+        ->orderBy('pendaftaran.tgl' , 'desc')->get();
+        return response()->json(['data' => $data]);
+    }
+
+    public function getRiwayat($id) {
+        $data = Pendaftaran::join('diagnosa', 'diagnosa.idp', 'pendaftaran.idp')
+        ->join('dokter', 'dokter.idd', 'diagnosa.idd')
+        ->select('pendaftaran.*', 'diagnosa.*', 'dokter.*')
+        ->where('pendaftaran.idp', $id)
+        ->orderBy('pendaftaran.tgl' , 'desc')->get();
+        return response()->json(['data' => $data]);
+    }
+
     public function savetempObat(Request $request) {
         $id = $request->input('id');
         $jumlah = $request->input('jumlah');

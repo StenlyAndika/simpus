@@ -21,7 +21,7 @@
                             <div class="input-group">
                                 <span class="input-group-text col-md-3">Jumlah</span>
                                 <input type="hidden" class="form-control" id="idobat" name="id" value="">
-                                <input type="number" class="form-control numberInput" id="jumlah" name="jumlah" value="">
+                                <input type="number" class="form-control numberInput" id="jumlah" name="jumlah" value="1">
                                 <button type="submit" class="btn btn-sm btn-primary">Submit</button>
                             </div>
                         </div>
