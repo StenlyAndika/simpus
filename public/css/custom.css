@@ -1,0 +1,37 @@
+input[readonly] {
+    background-color: white !important;
+    color: black !important;
+}
+
+.bg-glass {
+    background: rgba(255,255,255,0.55);
+    border-radius: 16px !important;
+    box-shadow: 0 4px 30px #4747470b !important;
+	backdrop-filter: blur(7.1px);
+    border: 1px solid rgba(255,255,255,0.3) !important;
+}
+
+.logo-text {
+    color: #4B4CA6 !important;
+}
+
+.toggle-icon {
+    color: #4B4CA6 !important;
+}
+
+.topbar {
+    background-color: #4B4CA6 !important;
+}
+
+.user-box{
+    background-color: #fff !important;
+    border-radius: 2px;
+}
+
+.page-content {
+    padding: 1rem !important;
+}
+
+table {
+    font-size: 13px;
+}
