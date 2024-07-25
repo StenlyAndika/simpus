@@ -145,6 +145,7 @@ class DashboardDiagnosa extends Controller
         $validatedDiagnosa['idd'] = $request->idd;
         $validatedDiagnosa['s'] = $tempSOAPData['s'] ?? '';
         $validatedDiagnosa['a'] = $tempSOAPData['a'] ?? '';
+        $validatedDiagnosa['p'] = $tempSOAPData['p'] ?? '';
         $validatedDiagnosa['alergi'] = $request->alergi ?? '';
         $validatedDiagnosa['kie'] = $request->kie ?? '';
         $validatedDiagnosa['rujukan'] = $request->rujukan ?? '';

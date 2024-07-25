@@ -4,6 +4,7 @@
     @php
         $tadmin = App\Models\User::where('is_root', '0')->count();
         $tsadmin = App\Models\User::where('is_root', '1')->count();
+        $tpasien = App\Models\Pasien::count();
     @endphp
     <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4">
         <div class="col">
@@ -30,6 +31,21 @@
                             <h4 class="my-1 text-danger">{{ $tadmin }}</h4>
                         </div>
                         <div class="widgets-icons-2 rounded-circle bg-danger text-white ms-auto">
+                            <i class='bx bx-user'></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card radius-10 border-start border-0 border-4 border-success">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <p class="mb-0 text-secondary">Pasien Terdaftari</p>
+                            <h4 class="my-1 text-success">{{ $tpasien }}</h4>
+                        </div>
+                        <div class="widgets-icons-2 rounded-circle bg-success text-white ms-auto">
                             <i class='bx bx-user'></i>
                         </div>
                     </div>

@@ -10,6 +10,7 @@ use App\Http\Controllers\DashboardEvent;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DashboardApotek;
 use App\Http\Controllers\DashboardDokter;
+use App\Http\Controllers\DashboardLaporan;
 use App\Http\Controllers\DashboardDiagnosa;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardPendaftaran;
@@ -53,6 +54,9 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/dashboard/apotek/{idp}', [DashboardApotek::class, 'index'])->name('admin.apotek.index');
     Route::post('/dashboard/apotek', [DashboardApotek::class, 'store'])->name('admin.apotek.store');
     Route::get('/dashboard/cetakresep/{idp}', [DashboardApotek::class, 'cetakResep'])->name('admin.apotek.printresep');
+
+    Route::get('/dashboard/laporan/berobat', [DashboardLaporan::class, 'berobat'])->name('admin.laporan.berobat');
+    Route::get('/dashboard/laporan/berobat/print/{tgl_awal}/{tgl_akhir}', [DashboardLaporan::class, 'printberobat'])->name('admin.laporan.printberobat');
 
     Route::get('/admin/user/{user}/show', [DashboardUser::class, 'show'])->name('admin.user.show');
     Route::put('/admin/user/{user}', [DashboardUser::class, 'update'])->name('admin.user.update');

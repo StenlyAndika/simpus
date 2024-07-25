@@ -50,18 +50,18 @@
                     </li>
                 </ul>
             </li>
-            {{-- <li class="">
+            <li class="{{ Request::is('dashboard/laporan/*') ? 'mm-active' : '' }}">
                 <a href="javascript:;" class="has-arrow">
-                    <div class="parent-icon"><i class='bx bx-data'></i>
+                    <div class="parent-icon"><i class='bx bxs-report'></i>
                     </div>
                     <div class="menu-title">Laporan</div>
                 </a>
-                <ul class="mm-collapse">
-                    <li class="">
-                        <a href=""><i class='bx bx-radio-circle'></i>Laporan Berobat</a>
+                <ul class="{{ Request::is('dashboard/laporan/*') ? 'mm-collapse mm-show' : 'mm-collapse' }}">
+                    <li class="{{ Request::is('dashboard/laporan/berobat*') ? 'mm-active border-end border-0 border-4 border-danger' : '' }}">
+                        <a href="{{ route('admin.laporan.berobat') }}"><i class='bx bx-radio-circle'></i>Laporan Berobat</a>
                     </li>
                 </ul>
-            </li> --}}
+            </li>
         @endcan
     </ul>
     <div class="sidebar-footer">
