@@ -8,16 +8,12 @@ use App\Models\Dokter;
 use App\Models\Pasien;
 use App\Models\Diagnosa;
 use App\Models\Objektif;
+use App\Models\ObatKeluar;
 use App\Models\Pendaftaran;
 use Illuminate\Http\Request;
 
 class DashboardDiagnosa extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index($idp)
     {
         $pendaftaran = Pendaftaran::where('idp', $idp)->first();
@@ -133,22 +129,6 @@ class DashboardDiagnosa extends Controller
         return response()->json(['success' => true]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $rules = [
@@ -157,7 +137,6 @@ class DashboardDiagnosa extends Controller
         ];
 
         $tempSOAPData = session('temp_soap_data');
-
 
         // Start store data diagnosa
         $validatedDiagnosa = $request->validate($rules);
@@ -190,8 +169,20 @@ class DashboardDiagnosa extends Controller
         Objektif::create($validatedObjektif);
         // End store data objektif
 
-
-        // ObatKeluar::create($validatedObat);
+        // Start store data obat keluar
+        $tempObatData = session('temp_obat_data', []);
+    
+        // Iterate over the session data and create database records
+        foreach ($tempObatData as $id => $jumlah) {
+            $validatedObat = [
+                'idp' => $request->idp,
+                'idobat' => $id,
+                'jumlah' => $jumlah
+            ];
+            
+            ObatKeluar::create($validatedObat);
+        }
+        // End store data obat keluar
 
 
         // Start store data pendaftaran
@@ -202,50 +193,5 @@ class DashboardDiagnosa extends Controller
 
 
         return redirect()->route('admin.dashboard')->with('toast_success', 'Data berhasil disubmit!');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

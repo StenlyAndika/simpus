@@ -303,7 +303,6 @@
                                         <td>${item.nama}</td>
                                         <td>${item.s}</td>
                                         <td>${item.p}</td>
-                                        <td>${item.alergi}</td>
                                         <td><button type="button" class="btn btn-block btn-sm btn-primary cekDataBtn" data-row-id="${item.idp}">Cek Data</button></td>
                                     </tr>`;
                             tableBody.append(row);
@@ -355,6 +354,14 @@
 
             $('.select2-bootstrap4').select2({
                 theme: 'bootstrap4',
+            });
+
+            $('.numberInput').on('keypress', function(evt) {
+                // Allow only backspace, delete, arrow keys, and numbers
+                var ASCIICode = (evt.which) ? evt.which : evt.keyCode;
+                if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57)) {
+                    evt.preventDefault();
+                }
             });
 
             $('#pasbaru').click(function() {

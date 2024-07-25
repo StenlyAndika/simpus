@@ -32,7 +32,7 @@ class DashboardController extends Controller
                     'title' => 'Dashboard Apotek',
                     'pendaftaran' => Pendaftaran::join('pasien', 'pasien.nik', 'pendaftaran.nik')
                     ->where('pendaftaran.tgl', Carbon::today())
-                    ->where('status', '1')
+                    ->whereIn('status' , ['1', '2'])
                     ->orderBy('no', 'asc')
                     ->select('pendaftaran.*','pasien.nama as namapas')
                     ->get()

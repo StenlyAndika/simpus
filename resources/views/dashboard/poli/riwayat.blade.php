@@ -14,9 +14,8 @@
                                     <th style="text-align: center;">#</th>
                                     <th style="text-align: left;">Tanggal Berobat</th>
                                     <th style="text-align: left;">Dokter</th>
-                                    <th style="text-align: left;">S</th>
-                                    <th style="text-align: left;">P</th>
-                                    <th style="text-align: left;">Alergi Obat</th>
+                                    <th style="text-align: left;">Subjective</th>
+                                    <th style="text-align: left;">Planning</th>
                                     <th style="text-align: left;">Opsi</th>
                                 </tr>
                             </thead>

@@ -54,7 +54,6 @@
                         </div>
                     </div>
                 </div>
-                <hr>
                 <div class="row mb-2">
                     <div class="col-md-6">
                         <div class="input-group">
@@ -62,18 +61,8 @@
                             <button type="button" class="btn btn-primary col-md-7" data-bs-toggle="modal" data-bs-target="#dataRiwayat" data-id="{{ $pasien->nik }}">Cek Data</button>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="input-group">
-                            <span class="input-group-text col-md-5">Dokter</span>
-                            <select class="select2-bootstrap4 form-control bg-light" id="idd" name="idd">
-                                <option value="1" selected>-- Pilih --</option>
-                                @foreach ($dokter as $item)
-                                    <option value="{{ $item->idd }}">{{ $item->nama }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
                 </div>
+                <hr>
                 <div class="row mb-2">
                     <div class="col-md-6" id="subjectiveContainer">
                         <div class="input-group" id="subjectiveInput">
@@ -147,6 +136,17 @@
                                 <span class="input-group-text"><i class='bx bx-x'></i></span>
                                 <button type="button" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#tambahObatKeluar">Isi Data</button>
                             @endif
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <span class="input-group-text col-md-5">Dokter</span>
+                            <select class="select2-bootstrap4 form-control bg-light" id="idd" name="idd">
+                                <option value="1" selected>-- Pilih --</option>
+                                @foreach ($dokter as $item)
+                                    <option value="{{ $item->idd }}">{{ $item->nama }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                 </div>

@@ -3,7 +3,7 @@
 @section('container')
     <div class="card radius-10 full-height">
         <div class="card-header">
-            <h5 class="mt-2">Data Pendaftaran Hari Ini</h5>
+            <h5 class="mt-2">Data Pasien Hari Ini</h5>
         </div>
         <div class="card-body">
             <div class="table-responsive">
