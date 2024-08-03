@@ -10,8 +10,8 @@ use Barryvdh\DomPDF\Facade\PDF;
 class DashboardLaporan extends Controller
 {
     public function berobat(Request $request) {
-        $awal = $request->input('tgl_awal');
-        $akhir = $request->input('tgl_akhir');
+        $awal = $request->input('tgl_awal') ?? '0';
+        $akhir = $request->input('tgl_akhir') ?? '0';
 
         $query = Pendaftaran::join('pasien', 'pasien.nik', 'pendaftaran.nik')
         ->join('diagnosa', 'diagnosa.idp', 'pendaftaran.idp')

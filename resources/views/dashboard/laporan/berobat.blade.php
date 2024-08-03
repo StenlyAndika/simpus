@@ -12,10 +12,10 @@
                 <button type="submit" class="btn btn-sm btn-success">
                     Cari Data
                 </button>
-                <a href="{{ route('admin.laporan.printberobat', ['tgl_awal' => $tgl_awal, 'tgl_akhir' => $tgl_akhir]) }}" class="btn btn-sm btn-primary">
-                    Cetak Laporan
-                </a>
             </form>
+            <a href="{{ route('admin.laporan.printberobat', ['tgl_awal' => $tgl_awal, 'tgl_akhir' => $tgl_akhir]) }}" class="btn btn-sm btn-primary">
+                Cetak Laporan
+            </a>
         </div>
         <div class="card-body">
             <div class="table-responsive">

@@ -111,7 +111,12 @@
                             </div>
                             <div class="col-md-7 d-flex">
                                 <div class="input-group mb-1">
-                                    <input type="text" class="form-control" id="pekerjaan" name="pekerjaan" value="">
+                                    <select class="select2-bootstrap4 form-control bg-light fs-6" id="pekerjaan" name="pekerjaan">
+                                        <option value="0" selected>Pilih Pekerjaan</option>
+                                        @foreach ($pekerjaan as $item)
+                                            <option value="{{ $item }}">{{ $item }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                         </div>

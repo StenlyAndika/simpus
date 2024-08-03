@@ -17,6 +17,21 @@ class DashboardDiagnosa extends Controller
     public function index($idp)
     {
         $pendaftaran = Pendaftaran::where('idp', $idp)->first();
+        $lastp = Pendaftaran::where('nik', $pendaftaran->nik)->orderBy('tgl', 'desc')->skip(1)->first();
+        // dd($lastp);
+        $objektif = Objektif::where('idp', $lastp->idp)->first();
+        // dd($objektif);
+        session(['temp_soap_data.td' => $objektif->td]);
+        session(['temp_soap_data.n' => $objektif->n]);
+        session(['temp_soap_data.r' => $objektif->r]);
+        session(['temp_soap_data.suhu' => $objektif->s]);
+        session(['temp_soap_data.tb' => $objektif->tb]);
+        session(['temp_soap_data.bb' => $objektif->bb]);
+        session(['temp_soap_data.kepala' => $objektif->kepala]);
+        session(['temp_soap_data.dada' => $objektif->dada]);
+        session(['temp_soap_data.abdomen' => $objektif->abdomen]);
+        session(['temp_soap_data.extermitas' => $objektif->extermitas]);
+
         return view('dashboard.poli.diagnosa', [
             'title' => 'Diagnosa Pasien',
             'pendaftaran' => $pendaftaran,
@@ -55,7 +70,10 @@ class DashboardDiagnosa extends Controller
     public function getRiwayat($id) {
         $data = Pendaftaran::join('diagnosa', 'diagnosa.idp', 'pendaftaran.idp')
         ->join('dokter', 'dokter.idd', 'diagnosa.idd')
-        ->select('pendaftaran.*', 'diagnosa.*', 'dokter.*')
+        ->join('objektif', 'objektif.idp', 'pendaftaran.idp')
+        ->join('obatkeluar', 'obatkeluar.idp', 'pendaftaran.idp')
+        ->join('obat', 'obat.id', 'obatkeluar.idobat')
+        ->select('pendaftaran.*', 'diagnosa.*', 'diagnosa.s as ds', 'dokter.*', 'objektif.*', 'objektif.s as suhu', 'obatkeluar.*', 'obat.nama as namaobat')
         ->where('pendaftaran.idp', $id)
         ->orderBy('pendaftaran.tgl' , 'desc')->get();
         return response()->json(['data' => $data]);

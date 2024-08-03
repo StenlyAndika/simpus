@@ -15,10 +15,8 @@ class DashboardUser extends Controller
             "UMUM",
             "GIGI",
             "MTBS",
-            "KIA/KB",
-            "GIZI",
-            "P2M",
-            "PKPR",
+            "KIA-KB",
+            "LANSIA",
             "APOTEK"
         ];
         return view('dashboard.user.index', [

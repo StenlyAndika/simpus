@@ -64,14 +64,22 @@ class DashboardPendaftaran extends Controller
             "GIGI",
             "MTBS",
             "KIA-KB",
-            "GIZI",
-            "P2M",
-            "PKPR"
+            "LANSIA"
+        ];
+
+        $pekerjaan = [
+            "Pegawai Negeri Sipil (PNS)",
+            "Pegawai Swasta",
+            "Petani/Perkebunan",
+            "Mengurus Rumah Tangga",
+            "Pelajar/Mahasiswa",
+            "Pekerjaan Lainnya"
         ];
 
         return view('dashboard.pendaftaran.create', [
             'title' => 'Dashboard Admin',
-            'poli' => $poli
+            'poli' => $poli,
+            'pekerjaan' => $pekerjaan
         ]);
     }
 

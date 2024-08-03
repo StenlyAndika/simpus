@@ -14,10 +14,8 @@ class DashboardDokter extends Controller
             "UMUM",
             "GIGI",
             "MTBS",
-            "KIA/KB",
-            "GIZI",
-            "P2M",
-            "PKPR"
+            "KIA-KB",
+            "LANSIA"
         ];
 
         return view('dashboard.dokter.index', [

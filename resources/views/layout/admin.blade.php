@@ -302,7 +302,7 @@
                                         <td>${formattedDate}</td>
                                         <td>${item.nama}</td>
                                         <td>${item.s}</td>
-                                        <td>${item.p}</td>
+                                        <td>${item.a}</td>
                                         <td><button type="button" class="btn btn-block btn-sm btn-primary cekDataBtn" data-row-id="${item.idp}">Cek Data</button></td>
                                     </tr>`;
                             tableBody.append(row);
@@ -331,10 +331,16 @@
                                                 date.getFullYear();
                             $('#rtgl').val(formattedDate);
                             $('#rdokter').val(response.data[0].nama);
-                            $('#rs').val(response.data[0].s.replace(/<\/?[^>]+(>|$)/g, ""));
-                            $('#ro').val(response.data[0].o.replace(/<\/?[^>]+(>|$)/g, ""));
+                            $('#rs').val(response.data[0].ds.replace(/<\/?[^>]+(>|$)/g, ""));
+                            $('#ro').val('td: ' + response.data[0].td + ', n: '+response.data[0].n+
+                            '\nr: '+response.data[0].r + ', s: '+response.data[0].suhu+
+                            '\ntb: '+response.data[0].tb + ', bb: '+response.data[0].bb+
+                            '\nkepala: '+response.data[0].kepala + ', dada: '+response.data[0].dada+
+                            '\nabdomen: '+response.data[0].abdomen + ', extermitas: '+response.data[0].extermitas);
                             $('#ra').val(response.data[0].a.replace(/<\/?[^>]+(>|$)/g, ""));
-                            $('#rp').val(response.data[0].p.replace(/<\/?[^>]+(>|$)/g, ""));
+                            // $('#rp').val('Obat diambil:\n'+
+                            //     response.data[0].namaobat
+                            // );
                         },
                         error: function(response) {
                             console.log('An error occurred while fetching data.');
@@ -444,7 +450,7 @@
                             $('#thn').val(year);
 
                             $('#jekel').val(data.jekel).change();
-                            $('#pekerjaan').val(data.pekerjaan);
+                            $('#pekerjaan').val(data.pekerjaan).change();
                             $('#alamat').val(data.alamat);
                             $('#nohp').val(data.nohp);
                             $('#status').val('Sudah Terdaftar');

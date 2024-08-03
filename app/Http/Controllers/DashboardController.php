@@ -43,9 +43,7 @@ class DashboardController extends Controller
                     "GIGI",
                     "MTBS",
                     "KIA-KB",
-                    "GIZI",
-                    "P2M",
-                    "PKPR"
+                    "LANSIA"
                 ];
                 session()->forget('temp_soap_data');
                 session()->forget('temp_obat_data');

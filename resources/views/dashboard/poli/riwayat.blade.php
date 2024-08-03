@@ -15,7 +15,7 @@
                                     <th style="text-align: left;">Tanggal Berobat</th>
                                     <th style="text-align: left;">Dokter</th>
                                     <th style="text-align: left;">Subjective</th>
-                                    <th style="text-align: left;">Planning</th>
+                                    <th style="text-align: left;">Penilaian</th>
                                     <th style="text-align: left;">Opsi</th>
                                 </tr>
                             </thead>
@@ -54,12 +54,12 @@
                                 <textarea class="form-control" id="ra" cols="30" rows="3"></textarea>
                             </div>
                         </div>
-                        <div class="mb-2">
+                        {{-- <div class="mb-2">
                             <div class="input-group">
                                 <span class="input-group-text col-md-5">P (Perencanaan)</span>
                                 <textarea class="form-control" id="rp" cols="30" rows="3"></textarea>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Kembali</button>
