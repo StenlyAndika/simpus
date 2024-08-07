@@ -20,8 +20,16 @@
                         <div class="col-md-6">
                             <div class="input-group">
                                 <span class="input-group-text col-md-3">Jumlah</span>
-                                <input type="hidden" class="form-control" id="idobat" name="id" value="">
                                 <input type="number" class="form-control numberInput" id="jumlah" name="jumlah" value="1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <span class="input-group-text col-md-3">Dosis</span>
+                                <input type="hidden" class="form-control" id="idobat" name="id" value="">
+                                <input type="text" class="form-control" id="dosis" name="dosis" value="" placeholder="3x1">
                                 <button type="submit" class="btn btn-sm btn-primary">Submit</button>
                             </div>
                         </div>
@@ -36,6 +44,7 @@
                                     <th>No</th>
                                     <th>Nama Obat</th>
                                     <th>Jumlah</th>
+                                    <th>Dosis</th>
                                     <th>Opsi</th>
                                 </tr>
                             </thead>

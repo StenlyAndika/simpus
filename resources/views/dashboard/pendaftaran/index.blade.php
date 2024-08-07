@@ -6,7 +6,7 @@
             <h5 class="mt-2">Data Pendaftaran Hari Ini</h5>
         </div>
         <div class="card-header mt-2 border-start border-0 border-4 border-danger">
-            <a href="{{ route('admin.pendaftaran.create') }}" class="btn btn-sm btn-success">Data Baru</a>
+            <a href="{{ route('admin.pendaftaran.create') }}" class="btn btn-sm btn-success">Tambah Data</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">

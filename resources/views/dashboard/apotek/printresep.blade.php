@@ -12,7 +12,7 @@
         }
         .container {
             text-align: center;
-            width: 350px;
+            width: 480px;
             border: 2px solid black;
             margin: 0;
             padding: 0;
@@ -58,16 +58,20 @@
         <hr>
         <table>
             <tr>
-                <td style="width: 250px">Obat Yang Diambil</td>
-                <td>Jumlah</td>
+                <td style="width: 240px">Obat Yang Diambil</td>
+                <td style="width: 50px">Jumlah</td>
+                <td style="width: 50px">Jenis</td>
+                <td>Dosis</td>
             </tr>
         </table>
         <hr>
         <table>
             @foreach ($obatkeluar as $row)
                 <tr>
-                    <td style="width: 250px">{{ ucwords(strtolower($row->nama)) }}</td>
-                    <td>{{ $row->jumlah }} {{ $row->jenis }}</td>
+                    <td style="width: 240px">{{ ucwords(strtolower($row->nama)) }}</td>
+                    <td style="width: 50px">{{ $row->jumlah }}</td>
+                    <td style="width: 50px">{{ $row->jenis }}</td>
+                    <td>{{ $row->dosis }}</td>
                 </tr>
             @endforeach
         </table>

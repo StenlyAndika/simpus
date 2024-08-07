@@ -148,11 +148,12 @@
                     url: '{{ route("gettempObat") }}',
                     method: 'GET',
                     success: function(response) {
+                        console.log(response);
                         var tableBody = $('#obatTable tbody');
                         tableBody.empty();
                         var i = 1;
                         response.data.forEach(function(item) {
-                            tableBody.append('<tr data-id="' + item.id + '"><td>' + i + '</td><td>' + item.nama + '</td><td>' + item.jumlah + '</td><td><button type="button" class="btn btn-danger hapusObat">Delete</button></td></tr>');
+                            tableBody.append('<tr data-id="' + item.id + '"><td>' + i + '</td><td>' + item.nama + '</td><td>' + item.jumlah + '</td><td>' + item.dosis + '</td><td><button type="button" class="btn btn-danger hapusObat">Delete</button></td></tr>');
                             i++;
                         });
 
@@ -371,13 +372,19 @@
             });
 
             $('#pasbaru').click(function() {
+                $.ajax({
+                    url: `/getnomr`,
+                    dataType: "json",
+                    success: function(data) {
+                        $('#nomr').val(data);
+                    }
+                });
                 $('#status').val('Belum Terdaftar');
                 $('#idpas').val('');
                 $('#tgl').val('');
                 $('#bln').val('');
                 $('#thn').val('');
                 $('#namakk').val('');
-                $('#nomr').val('');
                 $('#nik').val('');
                 $('#jekel').val('0').change();
                 $('#pekerjaan').val('');

@@ -46,11 +46,13 @@
                     <h1>PEMERINTAH KABUPATEN KERINCI</h1>
                     <h1>DINAS KESEHATAN</h1>
                     <h1>UPTD PUSKESMAS SIULAK MUKAI</h1>
+                    <h3>Alamat: RT 5 Mukai Mudik, Kec. Siulak Mukai, Kab. Kerinci, Provinsi Jambi&nbsp;&nbsp;&nbsp;Kode Pos: 37162</h3>
                 </td>
                 <td style="text-align: right;"> <img src="{{ asset('/img/tablogo.png') }}" width="140px"> </td>
             </tr>
         </table>
         <h4>LAPORAN BEROBAT DARI TANGGAL : {{ Carbon\Carbon::parse($tgl_awal)->format('d-m-Y') }} SD {{ Carbon\Carbon::parse($tgl_akhir)->format('d-m-Y') }}</h4>
+        <h4>TANGGAL CETAK LAPORAN : {{ Carbon\Carbon::now()->format('d-m-Y') }}</h4>
         <table class="table-body">
             <thead>
                 <tr>
@@ -116,6 +118,49 @@
                     </tr>
                 @endforeach
             </tbody>
+        </table>
+        <style>
+            .container {
+                width: 100%;
+            }
+            .right-align {
+                width: 100%;
+                text-align: left;
+            }
+            .right-align td:first-child {
+                width: 75%;
+            }
+            .right-align td:last-child {
+                width: 25%;
+            }
+        </style>
+        <br>
+        <br>
+        <table class="right-align">
+            <tr>
+                <td>&nbsp;</td>
+                <td>Siulak Mukai, {{ Carbon\Carbon::now()->format('d-m-Y') }}</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>Kepala Puskesmas Siulak Mukai</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>Hj. EFRIDAWATI ALI, SKM</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>NIP.19680329 198811 2 001</td>
+            </tr>
         </table>
     {{-- </div> --}}
 </body>

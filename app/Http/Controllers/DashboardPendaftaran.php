@@ -57,6 +57,25 @@ class DashboardPendaftaran extends Controller
         return $pdf->download('Kartu-Berobat-'.$formatNama.'.pdf');
     }
 
+    public function getnomr() {
+        // Retrieve the latest registration number
+        $latestRegNumber = Pasien::max('nomr'); // Assuming 'reg_number' is the column name
+
+        if ($latestRegNumber) {
+            // Extract the numeric part and increment
+            $numericPart = intval($latestRegNumber);
+            $newNumber = $numericPart + 1;
+        } else {
+            // If no record is found, start from the first number
+            $newNumber = 1;
+        }
+
+        // Format the new number with leading zeros
+        $newRegNumber = str_pad($newNumber, 8, '0', STR_PAD_LEFT);
+
+        return response()->json($newRegNumber);
+    }
+
     public function create()
     {
         $poli = [

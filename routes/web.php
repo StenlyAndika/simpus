@@ -64,6 +64,7 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/caripasien', [DashboardPendaftaran::class, 'caripasien'])->name('caripasien');
     Route::get('/getpasien/{idpas}', [DashboardPendaftaran::class, 'getpasien'])->name('getpasien');
     Route::get('/noantri/{poli}', [DashboardPendaftaran::class, 'noantri'])->name('noantri');
+    Route::get('/getnomr', [DashboardPendaftaran::class, 'getnomr'])->name('getnorm');
 
     Route::get('/cariobat', [DashboardDiagnosa::class, 'cariobat'])->name('cariobat');
     Route::get('/get-temp-obat', [DashboardDiagnosa::class, 'gettempObat'])->name('gettempObat');

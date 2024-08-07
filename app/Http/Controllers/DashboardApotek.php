@@ -5,20 +5,22 @@ namespace App\Http\Controllers;
 use App\Models\Obat;
 use App\Models\Dokter;
 use App\Models\Pasien;
-use Barryvdh\DomPDF\Facade\PDF;
+use App\Models\Diagnosa;
 use App\Models\ObatKeluar;
 use App\Models\Pendaftaran;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\PDF;
 
 class DashboardApotek extends Controller
 {
     public function index($idp)
     {
         $pendaftaran = Pendaftaran::where('idp', $idp)->first();
+        $diagnosa = Diagnosa::where('idp', $idp)->first();
         return view('dashboard.apotek.apotek', [
             'title' => 'Pengambilan Obat',
             'pendaftaran' => $pendaftaran,
-            'dokter' => Dokter::where('poli', auth()->user()->poli)->get(),
+            'dokter' => Dokter::where('idd', $diagnosa->idd)->first(),
             'pasien' => Pasien::where('nik', $pendaftaran->nik)->first(),
             'obat' => ObatKeluar::join('obat', 'obat.id', 'obatkeluar.idobat')->where('idp', $pendaftaran->idp)->get()
         ]);
@@ -53,7 +55,7 @@ class DashboardApotek extends Controller
         $obatkeluar = ObatKeluar::join('obat', 'obat.id', 'obatkeluar.idobat')
         ->where('obatkeluar.idp', $pendaftaran->idp)->get();
 
-        $customPaper = array(0,0,330, 350);
+        $customPaper = array(0,0,430, 350);
         $pdf = PDF::loadView('dashboard.apotek.printresep', ['pendaftaran' => $pendaftaran, 'obatkeluar' => $obatkeluar]);
         $pdf->setPaper($customPaper, 'portrait');
 

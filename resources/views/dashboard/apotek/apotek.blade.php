@@ -54,6 +54,20 @@
                         </div>
                     </div>
                 </div>
+                <div class="row mb-2">
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <span class="input-group-text col-md-5">Dokter</span>
+                            <input type="text" class="form-control" name="dokter" value="{{ $dokter->nama }}" readonly>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <span class="input-group-text col-md-5">Tanggal Berobat</span>
+                            <input type="text" class="form-control" name="tgl" value="{{ Carbon::parse($pendaftaran->tgl)->format('d-m-Y') }}" readonly>
+                        </div>
+                    </div>
+                </div>
                 <hr>
                 <div class="table-responsive">
                     <table id="obatTable" class="table table-striped datatablea">
@@ -62,6 +76,8 @@
                                 <th>No</th>
                                 <th>Nama Obat Yang Diambil</th>
                                 <th>Jumlah</th>
+                                <th>Jenis Obat</th>
+                                <th>Dosis</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -69,7 +85,9 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $row->nama }}</td>
-                                    <td>{{ $row->jumlah }} {{ $row->jenis }}</td>
+                                    <td>{{ $row->jumlah }}</td>
+                                    <td>{{ $row->jenis }}</td>
+                                    <td>{{ $row->dosis }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

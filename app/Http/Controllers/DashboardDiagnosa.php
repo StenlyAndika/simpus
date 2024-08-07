@@ -18,9 +18,9 @@ class DashboardDiagnosa extends Controller
     {
         $pendaftaran = Pendaftaran::where('idp', $idp)->first();
         $lastp = Pendaftaran::where('nik', $pendaftaran->nik)->orderBy('tgl', 'desc')->skip(1)->first();
-        // dd($lastp);
+
         $objektif = Objektif::where('idp', $lastp->idp)->first();
-        // dd($objektif);
+
         session(['temp_soap_data.td' => $objektif->td]);
         session(['temp_soap_data.n' => $objektif->n]);
         session(['temp_soap_data.r' => $objektif->r]);
@@ -82,11 +82,15 @@ class DashboardDiagnosa extends Controller
     public function savetempObat(Request $request) {
         $id = $request->input('id');
         $jumlah = $request->input('jumlah');
+        $dosis = $request->input('dosis');
 
         $tempObatData = session('temp_obat_data', []);
 
         if ($id) {
-            $tempObatData[$id] = $jumlah;
+            $tempObatData[$id] = [
+                'jumlah' => $jumlah,
+                'dosis' => $dosis
+            ];
         }
 
         session(['temp_obat_data' => $tempObatData]);
@@ -96,15 +100,16 @@ class DashboardDiagnosa extends Controller
     
     public function gettempObat() {
         $tempObatData = session('temp_obat_data', []);
-    
+
         $obatItems = [];
-        foreach ($tempObatData as $id => $jumlah) {
+        foreach ($tempObatData as $id => $data) {
             $obat = Obat::find($id);
             if ($obat) {
                 $obatItems[] = [
                     'id' => $obat->id,
                     'nama' => $obat->nama,
-                    'jumlah' => $jumlah
+                    'jumlah' => $data['jumlah'],
+                    'dosis' => $data['dosis']
                 ];
             }
         }
@@ -192,11 +197,12 @@ class DashboardDiagnosa extends Controller
         $tempObatData = session('temp_obat_data', []);
     
         // Iterate over the session data and create database records
-        foreach ($tempObatData as $id => $jumlah) {
+        foreach ($tempObatData as $id => $data) {
             $validatedObat = [
                 'idp' => $request->idp,
                 'idobat' => $id,
-                'jumlah' => $jumlah
+                'jumlah' => $data['jumlah'],
+                'dosis' => $data['dosis']
             ];
             
             ObatKeluar::create($validatedObat);
